@@ -50,8 +50,8 @@ bash scripts/typefully.sh list-drafts draft 5
 
 | Variable | Description |
 |----------|-------------|
-| `TYPEFULLY_API_KEY` | API key (fallback: `pass typefully/api-key`) |
-| `TYPEFULLY_SOCIAL_SET_ID` | Social set ID (fallback: `pass typefully/social-set-id`, then auto-detect) |
+| `TYPEFULLY_API_KEY` | **(Required)** API key (fallback: `pass typefully/api-key`) |
+| `TYPEFULLY_SOCIAL_SET_ID` | *(Optional)* Social set ID — auto-detected if you have one account (fallback: `pass typefully/social-set-id`) |
 
 ## License
 
