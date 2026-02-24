@@ -1,11 +1,11 @@
 ---
 name: typefully
 description: Create, schedule, list, edit, and delete drafts on Typefully. Supports single tweets, threads, and multi-platform posts (X, LinkedIn, Threads, Bluesky, Mastodon). Use when user wants to draft, schedule, or manage social media posts via Typefully.
-version: 1.1.0
+version: 1.2.0
+homepage: https://github.com/gisk0/typefully-skill
 requires:
   env:
     - TYPEFULLY_API_KEY
-    - TYPEFULLY_SOCIAL_SET_ID
   tools:
     - curl
     - python3
