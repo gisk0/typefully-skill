@@ -86,22 +86,17 @@ api() {
 
 build_posts_json() {
   local text="$1" is_thread="$2"
-  if [[ "$is_thread" == true ]]; then
-    local posts_json="["
-    local first=true
-    while IFS= read -r post; do
-      if [[ "$first" == true ]]; then first=false; else posts_json+=","; fi
-      local escaped
-      escaped=$(printf '%s' "$post" | python3 -c 'import sys,json; print(json.dumps(sys.stdin.read()))')
-      posts_json+="{\"text\":${escaped}}"
-    done <<< "$(printf '%b' "$text" | sed 's/\\n---\\n/\n/g')"
-    posts_json+="]"
-    printf '%s' "$posts_json"
-  else
-    local escaped
-    escaped=$(printf '%s' "$text" | python3 -c 'import sys,json; print(json.dumps(sys.stdin.read()))')
-    printf '%s' "[{\"text\":${escaped}}]"
-  fi
+  python3 -c '
+import sys, json, re
+text = sys.argv[1]
+is_thread = sys.argv[2] == "true"
+if is_thread:
+    parts = re.split(r"\n\s*---\s*\n", text)
+    posts = [{"text": p.strip()} for p in parts if p.strip()]
+else:
+    posts = [{"text": text.strip()}]
+print(json.dumps(posts))
+' "$text" "$is_thread"
 }
 
 build_platform_json() {
