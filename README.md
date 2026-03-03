@@ -15,6 +15,7 @@ Create, schedule, and manage [Typefully](https://typefully.com) drafts from your
    - Environment variable: `export TYPEFULLY_API_KEY=your-key`
    - Password store: `pass insert typefully/api-key`
 3. Install the skill:
+
    ```bash
    clawhub install typefully --dir ~/.openclaw/skills
    ```
