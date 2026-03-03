@@ -47,16 +47,19 @@ bash scripts/typefully.sh <command> [options]
 ### Examples
 
 **Create a simple tweet draft:**
+
 ```bash
 bash scripts/typefully.sh create-draft "Just shipped a new feature 🚀"
 ```
 
 **Create a thread:**
+
 ```bash
 bash scripts/typefully.sh create-draft "First tweet of the thread\n---\nSecond tweet\n---\nThird tweet" --thread
 ```
 
 **Create a thread from stdin (for longer content):**
+
 ```bash
 cat <<'EOF' | bash scripts/typefully.sh create-draft - --thread
 First tweet of the thread\n---\nSecond tweet\n---\nThird tweet with the punchline
@@ -64,21 +67,25 @@ EOF
 ```
 
 **Create cross-platform draft (X + LinkedIn):**
+
 ```bash
 bash scripts/typefully.sh create-draft "Exciting update!" --platform x,linkedin
 ```
 
 **Schedule a draft for a specific time:**
+
 ```bash
 bash scripts/typefully.sh create-draft "Morning thoughts ☀️" --schedule "2026-03-01T09:00:00Z"
 ```
 
 **Schedule to next free slot:**
+
 ```bash
 bash scripts/typefully.sh schedule-draft 8196074 next-free-slot
 ```
 
 **List recent drafts:**
+
 ```bash
 bash scripts/typefully.sh list-drafts draft 5
 ```
