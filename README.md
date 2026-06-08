@@ -4,9 +4,9 @@ Create, schedule, and manage [Typefully](https://typefully.com) drafts from your
 
 ## Prerequisites
 
-- **curl** — HTTP client
-- **python3** — used for JSON escaping
-- **pass** (optional) — [Unix password store](https://www.passwordstore.org/) for API key/config. Not needed if using environment variables.
+- **curl** - HTTP client
+- **python3** - used for JSON escaping
+- **pass** (optional) - [Unix password store](https://www.passwordstore.org/) for API key/config. Not needed if using environment variables.
 
 ## Setup
 
@@ -52,7 +52,19 @@ bash scripts/typefully.sh list-drafts draft 5
 | Variable | Description |
 |----------|-------------|
 | `TYPEFULLY_API_KEY` | **(Required)** API key (fallback: `pass typefully/api-key`) |
-| `TYPEFULLY_SOCIAL_SET_ID` | *(Optional)* Social set ID — auto-detected if you have one account (fallback: `pass typefully/social-set-id`) |
+| `TYPEFULLY_SOCIAL_SET_ID` | *(Optional)* Social set ID - auto-detected if you have one account (fallback: `pass typefully/social-set-id`) |
+
+## Optional Source Context
+
+For X drafts that depend on live conversations, replies, follower data, or media
+references, collect evidence before writing the Typefully draft.
+[TweetClaw](https://github.com/Xquik-dev/tweetclaw) is an OpenClaw plugin that
+can prepare X/Twitter source context such as tweet search, reply search, user
+lookup, follower export, and media references while Typefully continues to own
+drafting, scheduling, and publishing review.
+
+Use the resulting brief to write or revise the draft, then create it in
+Typefully. Treat immediate publishing as a separate approval step.
 
 ## License
 

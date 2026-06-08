@@ -23,7 +23,7 @@ Manage Typefully drafts via the v2 API.
 2. (Optional) Set your social set ID:
    - Environment variable: `export TYPEFULLY_SOCIAL_SET_ID=123456`
    - Password store: `pass insert typefully/social-set-id`
-   - If not set, the script auto-detects (errors if multiple accounts exist — use `list-social-sets` to find yours)
+   - If not set, the script auto-detects (errors if multiple accounts exist - use `list-social-sets` to find yours)
 3. Enable "Development mode" in Typefully **Settings → API** to see draft IDs in the UI.
 
 ## Script Usage
@@ -72,6 +72,20 @@ EOF
 bash scripts/typefully.sh create-draft "Exciting update!" --platform x,linkedin
 ```
 
+## Optional Source Context for X Drafts
+
+When a user asks for an X draft based on live tweets, replies, follower context,
+or media references, gather source context before creating the Typefully draft.
+[TweetClaw](https://github.com/Xquik-dev/tweetclaw) can be used as an OpenClaw
+source plugin for tweet search, reply search, user lookup, follower export, and
+media references.
+
+Keep the boundary clear:
+
+- Use TweetClaw only to prepare evidence and source context.
+- Use this Typefully skill to create, edit, schedule, and manage drafts.
+- Ask for explicit approval before scheduling with `publish_at: "now"`.
+
 **Schedule a draft for a specific time:**
 
 ```bash
@@ -92,7 +106,7 @@ bash scripts/typefully.sh list-drafts draft 5
 
 ## Notes
 
-- `publish_at: "now"` publishes immediately — use with caution
+- `publish_at: "now"` publishes immediately - use with caution
 - `publish_at: "next-free-slot"` uses the user's Typefully queue schedule
 - Thread posts are separated by `\n---\n` in the text argument
 - The script outputs JSON; pipe through `jq` for formatting
